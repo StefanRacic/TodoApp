@@ -27,6 +27,19 @@ namespace TodoApp.API.Controllers
       return Ok(todos);
     }
 
+    // GET api/todos/id
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetOne(int id)
+    {
+      var todo = await _context.Todos.FirstOrDefaultAsync(todo => todo.Id == id);
+      if (todo == null)
+      {
+        return BadRequest("No Item with that Id");
+      }
+
+      return Ok(todo);
+    }
+
     // POST api/todos
     [HttpPost]
     public async Task<IActionResult> Post(Todo todo)
@@ -41,6 +54,21 @@ namespace TodoApp.API.Controllers
         return BadRequest("You must specify name");
       }
       return Ok(todo);
+    }
+
+
+    // PUT api/todos/id
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Put(int id, Todo newTodo)
+    {
+      var todo = await _context.Todos.FirstOrDefaultAsync(todo => todo.Id == id);
+      if (todo == null)
+      {
+        return StatusCode(404, $"No Todo Item with id: " + id);
+      }
+      todo.Name = newTodo.Name;
+      await _context.SaveChangesAsync();
+      return Ok("Edited item");
     }
 
     // DELETE api/todos/id
@@ -58,7 +86,7 @@ namespace TodoApp.API.Controllers
         await _context.SaveChangesAsync();
       }
 
-      return Ok("Todo Item Removed");
+      return Ok("Todo Item with Id: " + id + " Removed");
     }
   }
 }
