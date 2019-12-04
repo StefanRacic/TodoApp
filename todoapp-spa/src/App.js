@@ -6,6 +6,7 @@ import Table from './Components/todos/Table';
 import Login from './Components/auth/Login';
 import Register from './Components/auth/Register';
 import AuthState from '../src/Components/context/auth/AuthState';
+import TodoState from '../src/Components/context/todo/TodoState';
 import setAuthToken from '../src/util/setAuthToken';
 import PrivateRoute from '../src/Components/routing/PrivateRoute';
 import './App.css';
@@ -17,17 +18,19 @@ if (localStorage.token) {
 function App() {
   return (
     <AuthState>
-      <Router>
-        <Fragment>
-          <Navbar />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <PrivateRoute exact path="/table" component={Table} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
-          </Switch>
-        </Fragment>
-      </Router>
+      <TodoState>
+        <Router>
+          <Fragment>
+            <Navbar />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <PrivateRoute exact path="/table" component={Table} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/register" component={Register} />
+            </Switch>
+          </Fragment>
+        </Router>
+      </TodoState>
     </AuthState>
   );
 }

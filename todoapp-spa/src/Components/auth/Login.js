@@ -50,9 +50,9 @@ const Login = props => {
                     value={username}
                     onChange={onChange}
                     className="form-control"
-                    placeholder="Username"
                     required
                     autoFocus
+                    placeholder="Username"
                   />
                 </div>
                 <div className="form-label-group">

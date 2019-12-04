@@ -15,6 +15,7 @@ const Home = () => {
     <div className="text-center pt-5">
       <h1>Welcome to Home Page</h1>
       <h5>This is your Todo App</h5>
+      <h3>Please Log In to Access your Todo App</h3>
     </div>
   );
 };

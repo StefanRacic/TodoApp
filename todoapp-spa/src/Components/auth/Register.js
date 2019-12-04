@@ -55,6 +55,7 @@ const Register = props => {
                     className="form-control"
                     required
                     autoFocus
+                    placeholder="Username"
                   />
                 </div>
                 <div className="form-label-group">
@@ -65,6 +66,7 @@ const Register = props => {
                     onChange={onChange}
                     className="form-control"
                     required
+                    placeholder="Password"
                   />
                 </div>
 
