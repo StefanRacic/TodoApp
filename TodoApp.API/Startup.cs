@@ -33,7 +33,13 @@ namespace TodoApp.API
       services.AddDbContext<DataContext>(x => x.UseSqlite
       (Configuration.GetConnectionString("DefaultConnection")));
       services.AddControllers();
-      services.AddCors();
+      services.AddCors(options =>
+      {
+        options.AddPolicy("EnableCORS", builder =>
+         {
+           builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().Build();
+         });
+      });
       services.AddScoped<IAuthRepository, AuthRepository>();
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
       .AddJwtBearer(options =>
@@ -57,9 +63,12 @@ namespace TodoApp.API
         app.UseDeveloperExceptionPage();
       }
 
+      app.UseCors("EnableCORS");
+
       app.UseHttpsRedirection();
 
       app.UseRouting();
+
 
       app.UseAuthentication();
       app.UseAuthorization();
