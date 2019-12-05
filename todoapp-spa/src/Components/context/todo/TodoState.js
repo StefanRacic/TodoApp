@@ -37,6 +37,17 @@ const TodoState = props => {
   // Get Todo
 
   // Add Todo
+  const addTodo = async todo => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'bearer ' + localStorage.getItem('token')
+      }
+    };
+
+    const res = await axios.post('/api/todos', todo, config);
+    dispatch({ type: ADD_TODO, payload: res.data });
+  };
 
   // Delete Todo
 
@@ -54,7 +65,8 @@ const TodoState = props => {
         todos: state.todos,
         current: state.current,
         error: state.error,
-        getTodos
+        getTodos,
+        addTodo
       }}
     >
       {props.children}

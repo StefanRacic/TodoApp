@@ -6,8 +6,12 @@ const TodoItem = ({ todo }) => {
   const { name, id } = todo;
   return (
     <tr>
-      <td>{name}</td>
-      <td>true</td>
+      <td>
+        <a href="">{name}</a>
+      </td>
+      <td className="text-center">
+        <input type="checkbox" name="" id="" />
+      </td>
     </tr>
   );
 };
