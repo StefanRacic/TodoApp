@@ -18,10 +18,6 @@ const Table = () => {
     // eslint-disable-next-line
   }, []);
 
-  if (todos !== null && todos.length === 0) {
-    return <h3>Please add a Todo Items...</h3>;
-  }
-
   return (
     <Fragment>
       {todos !== null ? (

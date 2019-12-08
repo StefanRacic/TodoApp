@@ -9,7 +9,9 @@
   background: #f4f4f4;
   box-shadow: black;
 }
-
+.links {
+  color: white;
+}
 .links:hover {
   text-decoration: none;
 }

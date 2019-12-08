@@ -37,13 +37,13 @@ const Navbar = () => {
 
   const LoggedOut = (
     <Fragment>
-      <li className="nav-link">
-        <Link className="links" to="/login">
+      <li className="nav-item">
+        <Link className="nav-link" to="/login">
           Login
         </Link>
       </li>
-      <li className="nav-link">
-        <Link className="links" to="/register">
+      <li className="nav-item">
+        <Link className="nav-link" to="/register">
           Register
         </Link>
       </li>
@@ -61,7 +61,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <Link className="navbar-brand" to="/">
         Todo App
       </Link>

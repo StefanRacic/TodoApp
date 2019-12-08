@@ -50,7 +50,17 @@ const TodoState = props => {
   };
 
   // Delete Todo
+  const deleteTodo = async id => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'bearer ' + localStorage.getItem('token')
+      }
+    };
 
+    await axios.delete(`/api/todos/${id}`, config);
+    dispatch({ type: DELETE_TODO, payload: id });
+  };
   // Update Todo
 
   // Clear todos
@@ -66,7 +76,8 @@ const TodoState = props => {
         current: state.current,
         error: state.error,
         getTodos,
-        addTodo
+        addTodo,
+        deleteTodo
       }}
     >
       {props.children}

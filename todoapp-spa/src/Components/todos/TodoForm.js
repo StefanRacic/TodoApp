@@ -26,6 +26,7 @@ const TodoForm = () => {
   const onSubmit = e => {
     e.preventDefault();
     addTodo(todo);
+    handleClose();
 
     setTodo({
       name: ''
@@ -53,15 +54,16 @@ const TodoForm = () => {
               type="text"
               name="name"
               value={name}
-              class="form-control"
+              className="form-control"
               placeholder="Enter Todo"
               onChange={onChange}
+              required
             ></input>
             <Modal.Footer>
               <Button variant="secondary" onClick={handleClose}>
                 Close
               </Button>
-              <Button variant="primary" type="submit" onClick={handleClose}>
+              <Button variant="primary" type="submit">
                 Add Todo
               </Button>
             </Modal.Footer>
