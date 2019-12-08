@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import alertify from 'alertifyjs';
 import TodoContext from '../context/todo/todoContext';
 import '../auth/login.css';
 
@@ -9,11 +10,12 @@ const TodoItem = ({ todo }) => {
 
   const onDelete = () => {
     deleteTodo(id);
+    alertify.error(`Removed ${name}`);
   };
   return (
     <tr>
       <td>
-        <a href="">{name}</a>
+        <p>{name}</p>
       </td>
       <td className="text-center">
         <input type="checkbox" style={{}} name="" id="" />

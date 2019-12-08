@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import '../auth/login.css';
 import AuthContext from '../context/auth/authContext';
+import alertify from 'alertifyjs';
 
 const Login = props => {
   const authContext = useContext(AuthContext);
@@ -27,12 +28,13 @@ const Login = props => {
   const onSubmit = e => {
     e.preventDefault();
     if (username === '' || password === '') {
-      console.log('Please input all fields');
+      alertify.error('Please input all fields');
     } else {
       login({
         username,
         password
       });
+      alertify.success(`Welcome ${username}`);
     }
   };
   return (
@@ -50,7 +52,6 @@ const Login = props => {
                     value={username}
                     onChange={onChange}
                     className="form-control"
-                    required
                     autoFocus
                     placeholder="Username"
                   />
@@ -63,7 +64,6 @@ const Login = props => {
                     onChange={onChange}
                     className="form-control"
                     placeholder="Password"
-                    required
                   />
                 </div>
                 <div className="custom-control custom-checkbox mb-3">

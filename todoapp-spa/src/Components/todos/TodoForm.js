@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import alertify from 'alertifyjs';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import TodoContext from '../context/todo/todoContext';
@@ -27,6 +28,7 @@ const TodoForm = () => {
     e.preventDefault();
     addTodo(todo);
     handleClose();
+    alertify.success('Todo Added');
 
     setTodo({
       name: ''
@@ -36,7 +38,9 @@ const TodoForm = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    setShow(true);
+  };
 
   return (
     <>

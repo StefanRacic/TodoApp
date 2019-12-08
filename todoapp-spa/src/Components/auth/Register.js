@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import AuthContext from '../context/auth/authContext';
+import alertify from 'alertifyjs';
 
 const Register = props => {
   const authContext = useContext(AuthContext);
@@ -30,12 +31,13 @@ const Register = props => {
   const onSubmit = e => {
     e.preventDefault();
     if (username === '' || password === '') {
-      console.log('Please enter all fields');
+      alertify.error('Please input all fields');
     } else {
       register({
         username,
         password
       });
+      alertify.success(`Welcome ${username}`);
     }
   };
   return (
@@ -53,7 +55,6 @@ const Register = props => {
                     value={username}
                     onChange={onChange}
                     className="form-control"
-                    required
                     autoFocus
                     placeholder="Username"
                   />
@@ -65,7 +66,6 @@ const Register = props => {
                     value={password}
                     onChange={onChange}
                     className="form-control"
-                    required
                     placeholder="Password"
                   />
                 </div>
